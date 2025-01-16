@@ -1,0 +1,61 @@
+@use "variable";
+
+@mixin flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin bg-text-color($bg,$txt){
+    background-color: $bg;
+    color : $txt;
+}
+@function font-change($size){
+    @return $size *2;
+}
+.app{
+    @if variable.$theme == dark {
+        // background-color: #222;
+        // color: $bg-color;
+        @include bg-text-color(#222,variable.$bg-color);
+    } @else {
+        @include bg-text-color(#fff,#222);
+    }
+    font : {
+        size: font-change(variable.$font-size);
+        weight: border;
+    }
+    .todo-template{
+        @include flex-center;
+        // border: 2px solid red;
+        // border-width: 2px;
+        // border-style: solid;
+        // border-color: red;
+        border: {
+            width: 2px;
+            style: solid;
+            color: red;
+        }
+        @for $i from 1 through 5 {
+            .box-#{$i} {
+                width: 100px + ($i*20);
+                background-color: #00f;
+            }
+        }
+    }
+}
+.block{
+    width: 90%;
+    height: 200%;
+    background-color: tomato;
+    &-box{
+        width: 80%;
+        height: 80%;
+        background-color: aqua;
+    }
+    &:hover{
+        background-color: #00f
+    }
+}
+// .app > .todo-template{
+//     background-color: aqua;
+// }
