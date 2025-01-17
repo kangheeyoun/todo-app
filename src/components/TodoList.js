@@ -1,5 +1,8 @@
-const TodoList = ({todos,onChecked}) => {
+const TodoList = ({todos,onChecked,onRemove}) => {
     // console.log(todos)
+    const handleChange = ()=>{
+        console.log("change");
+    }
     return (
         <div className="todo-list">
             <ul>
@@ -14,7 +17,7 @@ const TodoList = ({todos,onChecked}) => {
                                 onChange={()=>{onChecked (id)}}
                                 />
                             <label className={checked ? "checked":""}>{text}</label>
-                            <button>x</button>
+                            <button onClick={()=>{onRemove(id)}}>-</button>
                             </li>
                         );
                     })
